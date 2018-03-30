@@ -3,7 +3,8 @@ import {
 	EMAIL_CHANGED, 
 	PASSWORD_CHANGED, 
 	LOGIN_USER_SUCCESS, 
-	LOGIN_USER_FAIL 
+	LOGIN_USER_FAIL,
+	LOGGING_USER_IN
 } from './types';
 
 export const emailChanged = (text) => {
@@ -26,6 +27,7 @@ export const loginUser = ({ email, password }) => {
 	// dispatch an action. This waits for the function to finish before
 	// dispatching an action, instead of immediately returning an action
 	return (dispatch) => {
+		dispatch({ type: LOGGING_USER_IN });
 		firebase.auth().signInWithEmailAndPassword(email, password)
 		// take user and call helper method
 		.then(user => loginUserSuccess(dispatch, user))
