@@ -29,15 +29,15 @@ class EmployeeForm extends Component {
 					<Picker
 						// expand to fill all available area with flex: 1, if not doing so already
 						selectedValue={this.props.shift}
-						onValueChange={day => this.props.employeeUpdate({ prop: 'shift', value: day})}
+						onValueChange={day => this.props.employeeUpdate({ prop: 'shift', value: day })}
 					>
-						<Picker.Item label="Monday" values="Monday" />
-						<Picker.Item label="Tuesday" values="Tuesday" />
-						<Picker.Item label="Wednesday" values="Wednesday" />
-						<Picker.Item label="Thursday" values="Thursday" />
-						<Picker.Item label="Friday" values="Friday" />
-						<Picker.Item label="Saturday" values="Saturday" />
-						<Picker.Item label="Sunday" values="Sunday" />
+						<Picker.Item label="Monday" value="Monday" />
+						<Picker.Item label="Tuesday" value="Tuesday" />
+						<Picker.Item label="Wednesday" value="Wednesday" />
+						<Picker.Item label="Thursday" value="Thursday" />
+						<Picker.Item label="Friday" value="Friday" />
+						<Picker.Item label="Saturday" value="Saturday" />
+						<Picker.Item label="Sunday" value="Sunday" />
 					</Picker>
 				</CardSection>
 			</View>
