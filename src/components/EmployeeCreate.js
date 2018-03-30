@@ -7,8 +7,8 @@ import { Card, CardSection, Input, Button } from './common';
 class EmployeeCreate extends Component {
 	onButtonPress() {
 		const { name, phone, shift } = this.props;
-
-		this.props.employeeCreate({ name, phone, shift });
+		// set default shift to Monday if shift not set, so a value is always set
+		this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
 	}
 
 	render() {
