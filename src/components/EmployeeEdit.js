@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EmployeeForm from './EmployeeForm';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeSave } from '../actions';
 import { Card, CardSection, Button } from './common';
 
 class EmployeeEdit extends Component {
@@ -15,7 +15,10 @@ class EmployeeEdit extends Component {
 
 	onButtonPress() {
 		const { name, phone, shift } = this.props;
-		console.log(name, phone, shift);
+		// whenever we come to employee edit, only way we can navigate is by clicking
+		// or tapping on an employee, and the list item passes the uid, so we have 
+		// access to it as props
+		this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
 	}
 
 	render() {
@@ -23,7 +26,7 @@ class EmployeeEdit extends Component {
 			<Card>
 				<EmployeeForm />
 				<CardSection>
-					<Button onPress={this.onButtonPress.bind(this)}>
+					<Button whenClicked={this.onButtonPress.bind(this)}>
 						Save Changes
 					</Button>
 				</CardSection>
@@ -38,4 +41,9 @@ const mapStateToProps = (state) => {
 	return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeEdit);
+export default connect(mapStateToProps, { 
+	employeeUpdate, employeeSave 
+})(EmployeeEdit);
+
+
+

@@ -47,3 +47,15 @@ export const employeesFetch = () => {
 		});
 	};
 };
+
+export const employeeSave = ({ name, phone, shift, uid }) => {
+	const { currentUser } = firebase.auth();
+
+	return () => {
+		// need to update a particular ref, and set some new number of props on it
+		firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+		.set({ name, phone, shift })
+		.then(() => console.log('saved'));
+	};
+};
+
