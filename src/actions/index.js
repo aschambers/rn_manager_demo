@@ -29,6 +29,22 @@ export const loginUser = ({ email, password }) => {
 				type: LOGIN_USER_SUCCESS, 
 				payload: user 
 			});
+		})
+		.catch(() => {
+			firebase.auth().createUserWithEmailAndPassword(email, password)
+			.then(user => {
+				dispatch({ 
+					type: LOGIN_USER_SUCCESS, 
+					payload: user 
+				});
+			});
 		});
-	}
+	};
 };
+
+// const loginUserSuccess = (dispatch, user) => {
+// 	dispatch({
+// 		type: LOGIN_USER_SUCCESS,
+// 		payload: user
+// 	})
+// }
