@@ -50,6 +50,7 @@ const loginUserSuccess = (dispatch, user) => {
 		type: LOGIN_USER_SUCCESS,
 		payload: user
 	});
-	// lets you navigate to a different route
-	Actions.employeeList();
+	// lets you navigate to a different route, using that scene's key
+	// navigate to main, which shows first scene inside of it
+	Actions.main();
 }
