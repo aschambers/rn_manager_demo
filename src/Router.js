@@ -12,7 +12,12 @@ const RouterComponent = () => {
 					<Scene key="login" component={LoginForm} title="Please Login" initial />
 				</Scene>
 				<Scene key="main">
-					<Scene key="employeeList" component={EmployeeList} title="Employees" />
+					<Scene 
+						rightTitle="Add"
+						onRight={() => { console.log('right button in main nav') }}
+						key="employeeList" 
+						component={EmployeeList} 
+						title="Employees" />
 				</Scene>
 			</Scene>
 		</Router>
