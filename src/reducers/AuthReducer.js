@@ -1,5 +1,6 @@
-import { EMAIL_CHANGED } from '../actions/types';
-const INITIAL_STATE = { email: '' };
+import { EMAIL_CHANGED, PASSWORD_CHANGED } from '../actions/types';
+// just to let people know what the purpose of the AuthReducer is, not necessary
+const INITIAL_STATE = { email: '', password: '' };
 
 export default (state = INITIAL_STATE, action) => {
 	switch(action.type) {
@@ -8,6 +9,8 @@ export default (state = INITIAL_STATE, action) => {
 			// with new value of email, have to produce new object
 			// or else redux will think nothing changed
 			return {...state, email: action.payload };
+		case PASSWORD_CHANGED:
+			return {...state, password: action.payload };
 		default:
 			return state;
 	}
