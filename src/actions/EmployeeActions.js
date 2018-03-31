@@ -3,7 +3,8 @@ import { Actions } from 'react-native-router-flux';
 import {
 	EMPLOYEE_UPDATE,
 	EMPLOYEE_CREATE,
-	EMPLOYEES_FETCH_SUCCESS
+	EMPLOYEES_FETCH_SUCCESS,
+	EMPLOYEE_SAVE_SUCCESS
 } from './types';
 // allows you to update multiple different props, flexible action creator
 // prop could be name, phone or shift
@@ -39,6 +40,8 @@ export const employeesFetch = () => {
 	const { currentUser } = firebase.auth();
 
 	return (dispatch) => {
+		// changing the record by default, doesn't change the state, it's because of 
+		// the watcher we get the updated record from firebase
 		firebase.database().ref(`/users/${currentUser.uid}/employees`)
 		// snapshot is how we get access to the data, 
 		// snapshot is an object that describes the data
@@ -51,11 +54,16 @@ export const employeesFetch = () => {
 export const employeeSave = ({ name, phone, shift, uid }) => {
 	const { currentUser } = firebase.auth();
 
-	return () => {
+	return (dispatch) => {
 		// need to update a particular ref, and set some new number of props on it
 		firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
 		.set({ name, phone, shift })
-		.then(() => console.log('saved'));
+		.then(() => {
+			dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
+			Actions.pop();
+		});
 	};
 };
+
+
 
