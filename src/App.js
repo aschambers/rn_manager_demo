@@ -10,12 +10,12 @@ import Router from './Router';
 class App extends Component {
 	componentWillMount() {
 		const config = {
-		    apiKey: 'AIzaSyBESCKN4t9a458KQt1sIwhIsKK5xKu_bIY',
-		    authDomain: 'vuejs-http-7d991.firebaseapp.com',
-		    databaseURL: 'https://vuejs-http-7d991.firebaseio.com',
-		    projectId: 'vuejs-http-7d991',
-		    storageBucket: 'vuejs-http-7d991.appspot.com',
-		    messagingSenderId: '9584545554'
+		    apiKey: 'apiKeyHere',
+		    authDomain: 'authDomainHere',
+		    databaseURL: 'databaseURLHere',
+		    projectId: 'projectIdHere',
+		    storageBucket: 'storageBucketHere',
+		    messagingSenderId: 'messagingSenderIdHere'
 		};
 		firebase.initializeApp(config);
 	}
